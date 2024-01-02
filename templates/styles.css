@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f7ff; /* Tom de azul claro */
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #357ebd; /* Azul mais escuro para o título */
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.product-table th, .product-table td {
+    border: 1px solid #357ebd; /* Linhas da tabela com tom de azul */
+    padding: 8px;
+    text-align: left;
+}
+
+.product-table th {
+    background-color: #cfe2ff; /* Fundo azul claro para os cabeçalhos */
+}

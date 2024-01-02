@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Produtos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f7ff; /* Tom de azul claro */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #357ebd; /* Azul mais escuro para o título */
+        }
+
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .product-table th, .product-table td {
+            border: 1px solid #357ebd; /* Linhas da tabela com tom de azul */
+            padding: 8px;
+            text-align: left;
+        }
+
+        .product-table th {
+            background-color: #cfe2ff; /* Fundo azul claro para os cabeçalhos */
+        }
+
+                /* Estilos para o botão Adicionar Produto */
+                .add-product-btn {
+            background-color: #357ebd; /* Cor de fundo */
+            color: white; /* Cor do texto */
+            padding: 10px 20px; /* Espaçamento interno */
+            border: none; /* Remover borda */
+            border-radius: 5px; /* Borda arredondada */
+            cursor: pointer; /* Altera cursor ao passar por cima */
+            transition: background-color 0.3s ease; /* Suaviza a mudança de cor ao passar o mouse */
+        }
+
+        .add-product-btn:hover {
+            background-color: #265b8c; /* Cor de fundo ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Produtos</h1>
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product[0] }}</td>
+                    <td>{{ product[1] }}</td>
+                    <td>{{ product[2] }}</td>
+                    <td><a href="/edit_product/{{ product[0] }}">Editar</a></td>
+                    <td>
+                        <form action="/delete_product/{{ product[0] }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este produto?')">
+                            <input type="hidden" name="product_id" value="{{ product[0] }}">
+                            <button type="submit">Excluir</button>
+                        </form>
+                        
+                        
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <form action="/add_product" method="GET">
+        <br>
+        <button class="add-product-btn" type="submit">Adicionar Produto</button>
+    </form>
+</body>
+
+</html>
